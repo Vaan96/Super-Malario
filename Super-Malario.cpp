@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "Engine.cpp"
+#include "GameLogic.cpp"
 
 
 using namespace std;
@@ -11,12 +11,16 @@ int main(int argc, char** args)
 {
 
 	//Create new Engine
-	Engine *eng = new Engine();
-
-	eng->initEngine();
 
 
+	//eng->initEngine();
 
+
+	GameLogic* gl = new GameLogic();
+
+	printf("Engine Terminated\n");
+	system("pause");
+	
 	// End the program
 	return 0;
 }
