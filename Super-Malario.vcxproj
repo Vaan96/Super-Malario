@@ -153,6 +153,9 @@
     <ClCompile Include="Super-Malario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GraphicsEngine.h" />
+    <ClInclude Include="Malario.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

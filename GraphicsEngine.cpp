@@ -1,35 +1,18 @@
 /*Game Graphical Engine Class*/
-
-#include "SDL.h"
-#include "SDL_image.h"
-#include <stdlib.h>
-#include <iostream>
-#include <thread>  
-#include "resource.h"
-
-
-using namespace std;
-
-
-class GraphicsEngine {
-
-	
-public:	
-	
-	//Getters and Setters
+#include "GraphicsEngine.h"
 
 	//gets the current state of window
-	SDL_Window* getCurrentWindow() {
+	SDL_Window* GraphicsEngine::getCurrentWindow() {
 		return window;
 	}
 
 	//Sets the created window in the variable
-	void setCurrentWindow(SDL_Window* Mwindow) {
+	void GraphicsEngine::setCurrentWindow(SDL_Window* Mwindow) {
 		window = Mwindow;
 	}
 
 	//Destroys the main window, if created
-	void destroyCurrentWindow() {
+	void GraphicsEngine::destroyCurrentWindow() {
 
 		if (getCurrentWindow() != NULL) {
 			// Destroy the window. This will also destroy the surface
@@ -45,24 +28,24 @@ public:
 	}
 
 	//Sets the main renderer
-	void setMainRender(SDL_Renderer* rnd) {
+	void GraphicsEngine::setMainRender(SDL_Renderer* rnd) {
 		mainRender = rnd;
 	}
 
 	//Gets the main renderer
-	SDL_Renderer* getMainRenderer() {
+	SDL_Renderer* GraphicsEngine::getMainRenderer() {
 		return mainRender;
 	}
 
-	SDL_Surface* getMainSurface() {
+	SDL_Surface* GraphicsEngine::getMainSurface() {
 		return surface;
 	}
 
-	void setMainSurface(SDL_Surface* surf) {
+	void GraphicsEngine::setMainSurface(SDL_Surface* surf) {
 		surface = surf;
 	}
 
-	bool renderTexture(SDL_Surface* img, SDL_Rect src, SDL_Rect dst) {
+	bool GraphicsEngine::renderTexture(SDL_Surface* img, SDL_Rect src, SDL_Rect dst) {
 
 		SDL_Window* window = getCurrentWindow();
 
@@ -121,7 +104,7 @@ public:
 
 	}
 
-	void updateCurrentWindow() {
+	void GraphicsEngine::updateCurrentWindow() {
 		if (getMainRenderer() != NULL && getMainSurface() != NULL) {
 			//update current render
 			printf("Update window");
@@ -136,7 +119,7 @@ public:
 	}
 
 	//Init the main window if not already initiated
-	void initMainWindow() {
+	void GraphicsEngine::initMainWindow() {
 
 		//temp main window
 		SDL_Window* _window = NULL;
@@ -176,8 +159,6 @@ public:
 					system("pause");
 				}
 
-				 //SDL_GetWindowSurface(window);
-
 				//now, create a new render
 				if (getMainRenderer() == NULL) {
 					//Create a new one
@@ -212,77 +193,9 @@ public:
 		
 	}
 
-	void initEngine() {
-
-		initMainWindow();
-
-	
-		
-
-
-		//while (isRunning) {
-			//std::this_thread::sleep_for(std::chrono::microseconds(10));
-
-			//tick = SDL_GetTicks();
-			//std::cout << "ticks:  " << currentTime << std::endl;
-			//measurement = (measurement * smoothing) + (tick * (1.0 - smoothing));
-
-			// frame / (tick / 60.0f);
-
-		
-
-			
-		
-			/*if (r > 0 && r != 255 && white == false) {
-				SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, r, r, r));
-				SDL_UpdateWindowSurface(window);
-				r++;
-
-				if (r == 255)
-					white = true;
-			}
-
-			if (r != 1 && r <= 255 && white == true) {
-				SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, r, r, r));
-				SDL_UpdateWindowSurface(window);
-				r--;
-
-				if (r == 1)
-					white = false;
-			}*/
-
-			//std::cout << "FPS:  " << fps << std::endl;
-			
-			/*if (currentTime > lastTime + 2000) {
-				std::cout << "Milliseconds:  " << lastTime << std::endl;
-				lastTime = currentTime;
-			}*/
-			
-		
-			
-			/*for (int k = 0; k < 255; k++) {
-
-				int r = k, g = k, b = k;
-				
-				SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, r, g, b));
-				SDL_UpdateWindowSurface(window);
-			}
-
-			for (int k = 255; k > 0; k--) {
-
-				int r = k, g = k, b = k;
-				//std::this_thread::sleep_for(std::chrono::milliseconds(25));
-
-				SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, r, g, b));
-				SDL_UpdateWindowSurface(window);
-			}
-			*/
-		
-
-	}
 
 	//Constructor
-	GraphicsEngine() {
+	GraphicsEngine::GraphicsEngine() {
 
 		//Init class
 		// Initialize SDL. SDL_Init will return -1 if it fails.
@@ -293,13 +206,12 @@ public:
 			//return;
 		}
 
-		initEngine();
+		initMainWindow();
 	}
 
-private:
-		SDL_Window* window;
-		SDL_Renderer* mainRender;
-		SDL_Surface* surface;
-};
+	GraphicsEngine::~GraphicsEngine() {
+
+	}
+
 
 

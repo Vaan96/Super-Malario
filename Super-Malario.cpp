@@ -1,8 +1,7 @@
 // Super-Malario.cpp : Este arquivo contém a função 'main'. A execução do programa começa e termina ali.
 //
 
-#include <iostream>
-#include "GameLogic.cpp"
+#include "GameLogic.h"
 
 
 using namespace std;
