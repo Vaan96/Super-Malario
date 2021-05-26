@@ -65,9 +65,13 @@ public:
 
 		int frame = 0;
 
+		
+		//ge->renderTexture(img1, srcrect1, dstrect1);
+
 		SDL_Rect srcrect1 = { 0, 0, 1280, 750 };
 		SDL_Rect dstrect1 = { 0, 0, 1280, 750 };
 		SDL_Surface* img1 = IMG_Load("assets/img/bg.png");
+
 
 		ge->renderTexture(img1, srcrect1, dstrect1);
 
@@ -76,35 +80,43 @@ public:
 		int i = 0;
 		int h = 0;
 
+		SDL_Event input;
+
 		while (running) {
 
 			SDL_RenderClear(ge->getMainRenderer());
 
-			//SDL_Delay(10);
+			
 
-			while (frame < 240) {
-				frame++;
-				std::cout << "loading...  " << frame << std::endl;
-			}
+			/*while (SDL_PollEvent(&input) > 0)
+			{
+				if (input.type == SDL_QUIT) running = false;
+			}*/
 
-			//ge->updateCurrentWindow();
+
+			int totalFrames = 8;
+			int delayPerFrame = 100;
+
+			int frame = (SDL_GetTicks() / delayPerFrame) % totalFrames;
+
+
+
+
 
 			//mario
 			SDL_Rect srcrect = { 28, 0, 18, 17 };
 			SDL_Rect dstrect = { i, h, 50, 50 };
 			SDL_Surface* img = IMG_Load("assets/spritesheet/mario.png");
 
+			
+
 			ge->renderTexture(img, srcrect, dstrect);
 
 
+			std::cout << "avgFPS:  " << frame << std::endl;
 
-			float fps = frame / 60;
+			
 
-			float avgFPS = frame / fps;
-
-			std::cout << "avgFPS:  " << avgFPS << std::endl;
-
-			++frame;
 
 			i++;
 			h++;

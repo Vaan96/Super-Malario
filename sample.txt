@@ -1,0 +1,110 @@
+
+		//init vars
+		//init window
+
+		// Pointers to our window and surface
+		/*SDL_Surface* winSurface = NULL;
+		SDL_Window* window = NULL;
+
+
+		IMG_Init(IMG_INIT_PNG);
+
+		SDL_Surface* image = IMG_Load("assets/spritesheet/mario.png");
+
+	
+
+		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+		int initted = IMG_Init(flags);
+
+		
+		if (image == NULL) {
+			cout << "Error initializing SDL: " << SDL_GetError() << endl;
+			system("pause");
+		}
+
+
+		// Initialize SDL. SDL_Init will return -1 if it fails.
+		if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+			//cout << "Error initializing SDL: " << SDL_GetError() << endl;
+			system("pause");
+			// End the program
+			//return;
+		}
+
+		// Create our window
+		window = SDL_CreateWindow("Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+
+
+		Uint32 render_flags = SDL_RENDERER_PRESENTVSYNC | IMG_INIT_JPG | IMG_INIT_PNG;
+		SDL_Renderer* rend = SDL_CreateRenderer(window, -1, 0);
+
+		SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, image);
+
+		SDL_FreeSurface(image);
+
+		if (!tex)
+		{
+			printf("error creating texture: %s\n", SDL_GetError());
+			//getchar(); // show error message, hit any key to quit
+			SDL_DestroyRenderer(rend);
+			SDL_DestroyWindow(window);
+			SDL_Quit();
+		}
+
+
+		SDL_RenderClear(rend);
+
+		//SDL_Rect srcrect = { x location, y location, width location, heigth location };
+		//SDL_Rect srcrect = { 0, 16, 14, 13 }; //sprite sheet for game ove mario
+
+		SDL_Rect srcrect = { 28, 0, 18, 17 }; //sprite sheet for jumping mario
+
+		//SDL_Rect dstrect = { x screen, y screen, sprite width, sprite height };
+		SDL_Rect dstrect = { 102, 0, 50, 50 };
+
+		SDL_RenderCopy(rend, tex, &srcrect, &dstrect); // draw the image to the window
+		SDL_RenderPresent(rend);
+
+
+//		system("pause");
+
+		//return;
+
+		// Get the surface from the window
+		winSurface = SDL_GetWindowSurface(window);
+
+		// Make sure getting the surface succeeded
+		if (!winSurface) {
+			//cout << "Error getting surface: " << SDL_GetError() << endl;
+			system("pause");
+			// End the program
+			//return;
+		}
+
+		// Fill the window with a white rectangle
+		SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, 0, 0, 0));
+
+		// Update the window display
+		SDL_UpdateWindowSurface(window);
+
+		// Wait -  Delay
+		//SDL_Delay(2000);
+
+		//cicle while loop
+
+		/*   
+		
+		int counter = 0;
+		double test, test2;
+		while (timer.elapsedSeconds() < 10.0)
+		{
+			counter++;
+			test = std::cos(counter / M_PI);
+			test2 = std::sin(counter / M_PI);
+		}
+		timer.stop();
+
+		std::cout << counter << std::endl;
+		std::cout << "Seconds: " << timer.elapsedSeconds() << std::endl;
+		std::cout << "Milliseconds: " << timer.elapsedMilliseconds() << std::endl;
+	}*/
